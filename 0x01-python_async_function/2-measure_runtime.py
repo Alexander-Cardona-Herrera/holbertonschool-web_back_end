@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Function measure_time """
+""" 2. Function measure_time """
 from time import perf_counter
 import asyncio
 wait_n = __import__('1-concurrent_coroutines').wait_n

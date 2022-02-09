@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Function task_wait_random """
+""" 3. Function task_wait_random """
 import asyncio
 wait_random = __import__('0-basic_async_syntax').wait_random
 

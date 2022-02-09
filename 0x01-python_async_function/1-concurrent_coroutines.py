@@ -1,26 +1,20 @@
-
 #!/usr/bin/env python3
-""" Asynchronous coroutine wait_n"""
+''' 1. Let's execute multiple
+coroutines at the same time with async '''
+
 import asyncio
 from typing import List
+
 wait_random = __import__('0-basic_async_syntax').wait_random
 
 
 async def wait_n(n: int, max_delay: int) -> List[float]:
-    """ Function taht executes wait_random n times"""
-    array_delay = []
-    for i in range(n):
-        delay = asyncio.create_task(wait_random(max_delay))
-        array_delay.append(await delay)
-
-    new_array = []
-
-    while array_delay:
-        min = array_delay[0]
-        for num in array_delay:
-            if num < min:
-                min = num
-        new_array.append(min)
-        array_delay.remove(min)
-
-    return new_array
+    '''
+    return the list of all the delays (float values).
+    The list of the delays should be in ascending order
+    without using sort() because of concurrency.'''
+    delays_list = []
+    for index in range(n):
+        delays_list.append(asyncio.create_task(wait_random(max_delay)))
+    done = await asyncio.gather(*delays_list)
+    return sorted(done)
