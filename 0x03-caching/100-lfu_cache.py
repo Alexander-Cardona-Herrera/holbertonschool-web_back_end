@@ -47,4 +47,3 @@ class LFUCache(BaseCaching):
             else:
                 self.lfu_cache[key] = 1
             return value
-
