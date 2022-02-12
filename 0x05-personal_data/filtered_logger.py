@@ -5,6 +5,9 @@ import re
 import logging
 
 
+PII_FIELDS = ("name", "email", "phone", "ssn", "password")
+
+
 class RedactingFormatter(logging.Formatter):
     """ Redacting Formatter class
     """
@@ -35,3 +38,14 @@ def filter_datum(
                 field, redaction, separator), message)
 
     return message
+
+
+def get_logger() -> logging.Logger:
+    """ return logging.logger """
+    log = logging.getLogger("user_data")
+    log = setLevel(logging.INFO)
+    log.propagate = false
+    instance = logging.StreamHandler()
+    instance.setFormatter(RedactingFormatter(PII_FIELDS))
+    log.addHandler(sh)
+    return log
