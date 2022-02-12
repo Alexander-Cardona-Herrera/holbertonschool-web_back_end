@@ -41,11 +41,13 @@ def filter_datum(
 
 
 def get_logger() -> logging.Logger:
-    """ return logging.logger """
+    """ Function that returns a logging.Logger object """
+
     log = logging.getLogger("user_data")
-    log = setLevel(logging.INFO)
+    log.setLevel(logging.INFO)
     log.propagate = False
-    instance = logging.StreamHandler()
-    instance.setFormatter(RedactingFormatter(PII_FIELDS))
-    log.addHandler(instance)
+    stream_handler = logging.StreamHandler()
+    stream_handler.setFormatter(RedactingFormatter(PII_FIELDS))
+    log.addHandler(stream_handler)
+
     return log
