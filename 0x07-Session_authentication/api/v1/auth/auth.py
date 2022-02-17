@@ -4,6 +4,7 @@ Route module for the auth
 """
 from flask import request
 from typing import List, TypeVar
+from os import getenv
 
 
 class Auth:
@@ -32,3 +33,12 @@ class Auth:
     def current_user(self, request=None) -> TypeVar('User'):
         """ returns none """
         return None
+
+    def session_cookie(self, request=None):
+        """ returns a cookie value from a request """
+        if request is None:
+            return None
+
+        _my_session_id = getenv('SESSION_NAME')
+        cookie = request.cookies.get(_my_session_id)
+        return cookie
