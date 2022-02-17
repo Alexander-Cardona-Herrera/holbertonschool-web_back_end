@@ -4,6 +4,7 @@ Route module for the session auth
 """
 from api.v1.auth.auth import Auth
 import uuid
+from models.user import User
 
 
 class SessionAuth(Auth):
@@ -26,3 +27,11 @@ class SessionAuth(Auth):
             return None
 
         return self.user_id_by_session_id.get(session_id)
+
+    def current_user(self, request=None):
+        """ that returns a User instance based on a cookie value """
+        session_cookie = self.session_cookie(request)
+        if session_cookie is None:
+            return None
+        _id = self.user_id_by_session_id(session_cookie)
+        return User.get(_id)
