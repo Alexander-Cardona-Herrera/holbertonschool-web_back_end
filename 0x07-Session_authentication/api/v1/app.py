@@ -51,7 +51,7 @@ def before_request_func():
         abort(401)
 
     if auth.current_user(request) is None:
-        abort(403)
+        abort(401)
 
 
 @app.errorhandler(404)
