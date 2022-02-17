@@ -26,13 +26,13 @@ if os.getenv('AUTH_TYPE') == 'basic_auth':
 @app.before_request
 def before_request_func():
     """ validate request """
+    request.current_user = auth.current_user(request)
+
     if auth is None:
         return
     excluded_paths = ['/api/v1/status/',
                       '/api/v1/unauthorized/',
                       '/api/v1/forbidden/']
-
-    request.current_user = auth.current_user(request)
 
     if not auth.require_auth(request.path, excluded_paths):
         return
