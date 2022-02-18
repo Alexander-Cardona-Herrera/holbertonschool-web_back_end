@@ -40,7 +40,7 @@ def login():
                  methods=['DELETE'],
                  strict_slashes=False)
 def logout():
-    '''self descriptive'''
+    """ logout function """
     destroy_session = auth.destroy_session(request)
 
     if destroy_session:
