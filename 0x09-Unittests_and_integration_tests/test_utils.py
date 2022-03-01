@@ -54,8 +54,10 @@ class TestMemoize(unittest.TestCase):
 
     def test_memoize(self):
         """ test method for nested map """
+
         class TestClass:
             """ mocked class """
+
             def a_method(self):
                 """ method mocked """
                 return 42
@@ -64,12 +66,13 @@ class TestMemoize(unittest.TestCase):
             def a_property(self):
                 """ method mocked """
                 return self.a_method()
-        
+
         with patch.object(TestClass, 'a_method') as mocked:
             spec = TestClass()
             spec.a_property
             spec.a_property
             mocked.asset_called_once()
+
 
 if __name__ == '__main__':
     unittest.main()
