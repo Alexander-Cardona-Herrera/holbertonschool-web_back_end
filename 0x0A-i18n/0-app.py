@@ -6,13 +6,13 @@ Module basic Flask app
 from flask import Flask, render_template
 from flask_babel import Babel
 
+
 app = Flask(__name__)
-app.config.from_pyfile('mysettings.cfg')
-babel = Babel(app)
+
 
 @app.route('/')
-@app.route('/index')
 def index():
+    """ method to call the templates """
     return render_template('0-index.html')
 
 if __name__ == "__main__":
