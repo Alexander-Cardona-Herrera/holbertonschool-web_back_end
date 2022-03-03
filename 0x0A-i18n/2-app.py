@@ -29,7 +29,7 @@ def index():
 
 @babel.localeselector
 def get_locale():
-    """  """
+    """ method to set lenguage """
     return request.accept_languages.best_match(["en", "fr"])
 
 
