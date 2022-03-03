@@ -10,10 +10,16 @@ from flask_babel import Babel
 app = Flask(__name__)
 babel = Babel(app)
 
+
 @app.route('/')
 def index():
     """ method to call the templates """
-    return render_template('0-index.html')
+    return render_template('1-index.html')
+
+
+class Config(default_locale='en', default_timezone='UTC'):
+    """ configuration class """
+    LANGUAGES = ["en", "fr"]
 
 
 if __name__ == "__main__":
