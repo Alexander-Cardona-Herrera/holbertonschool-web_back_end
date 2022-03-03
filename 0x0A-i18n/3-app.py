@@ -19,6 +19,7 @@ class Config():
 
 
 app.config.from_object(Config)
+""" app config """
 
 
 @app.route('/')
