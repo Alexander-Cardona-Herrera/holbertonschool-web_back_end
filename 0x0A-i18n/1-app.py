@@ -17,10 +17,14 @@ def index():
     return render_template('1-index.html')
 
 
-class Config.Babel(default_locale='en', default_timezone='UTC'):
+class Config():
     """ configuration class """
     LANGUAGES = ["en", "fr"]
+    BABEL_DEFAULT_LOCALE = "en"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
 
+
+app.config.from_object(Config)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
