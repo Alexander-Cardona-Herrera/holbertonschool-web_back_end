@@ -17,7 +17,7 @@ def index():
     return render_template('1-index.html')
 
 
-class Config(default_locale='en', default_timezone='UTC'):
+class Config.Babel(default_locale='en', default_timezone='UTC'):
     """ configuration class """
     LANGUAGES = ["en", "fr"]
 
