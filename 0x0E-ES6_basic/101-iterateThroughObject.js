@@ -1,5 +1,3 @@
-export default function createEmployeesObject(departmentName, employees) {
-  return {
-    [departmentName]: [...employees],
-  };
-}
+export default function iterateThroughObject(reportWithIterator) {
+  return
+ }
