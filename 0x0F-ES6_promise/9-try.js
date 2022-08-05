@@ -9,5 +9,5 @@ const guardrail = (mathFunction) => {
   }
   return queue;
 };
-  
+
 export default guardrail;
